@@ -1,5 +1,10 @@
 # Scalable Containerized E-Commerce Application
 
+![Docker Integration](https://img.shields.io/badge/Docker-Enabled-blue?logo=docker)
+![CI/CD Pipeline](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?logo=github-actions)
+![Node.js Backend](https://img.shields.io/badge/Backend-Node.js-339933?logo=node.js)
+![Frontend](https://img.shields.io/badge/Frontend-Vanilla_JS-F7DF1E?logo=javascript)
+
 A scalable, containerized e-commerce application demonstrating modern Continuous Integration and Continuous Deployment (CI/CD) practices. The project uses a lightweight microservices architecture built with a Vanilla HTML/CSS/JS frontend, a Node.js/Express backend, and SQLite for data persistence. Everything is fully orchestrated via Docker Compose and automated using GitHub Actions.
 
 ## 🏗️ Architecture
@@ -15,6 +20,27 @@ The application is decoupled into two primary containerized services:
    - Operates entirely within a lightweight `node:20-alpine` Docker container.
 3. **Database**:
    - Embedded SQLite initialized automatically inside the Backend Service runtime to ensure complete portability without the overhead of external database servers.
+
+### 📂 Directory Structure
+
+```text
+dev_ops-ci-cd-pipeline/
+├── .github/
+│   └── workflows/
+│       └── main.yml        # CI/CD Pipeline Configuration
+├── backend/
+│   ├── Dockerfile          # Backend container definition
+│   ├── server.js           # Express REST API
+│   └── package.json        
+├── frontend/
+│   ├── css/style.css       # Premium Glassmorphism UI styles
+│   ├── js/app.js           # Vanilla JS state and API logic
+│   ├── index.html          
+│   ├── Dockerfile          # Frontend complete container definition
+│   └── nginx.conf          # Nginx routing configuration
+├── docker-compose.yml      # Master orchestration file
+└── README.md
+```
 
 ---
 
