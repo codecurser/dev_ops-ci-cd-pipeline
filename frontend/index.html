@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusTech - Premium Tech Gear</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-microchip"></i> NEXUS<span>TECH</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+        </ul>
+        <div class="nav-actions">
+            <div class="cart-icon" id="cart-btn">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-count">0</span>
+            </div>
+            <div id="auth-section">
+                <button class="btn btn-outline" id="login-btn">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <h1>Elevate Your Reality</h1>
+            <p>Discover next-generation technology designed to seamlessly integrate into your life.</p>
+            <a href="#products" class="btn btn-primary">Shop Now</a>
+        </div>
+        <div class="hero-image">
+           <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" alt="Futuristic Tech Setup">
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="section-header">
+            <h2>Featured Gear</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="product-grid" id="productGrid">
+            <!-- Products loaded via JS -->
+            <div class="loader"></div>
+        </div>
+    </section>
+
+    <!-- Cart Modal (Glassmorphism) -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content glass">
+            <span class="close-btn" id="closeCart">&times;</span>
+            <h2>Your Cart</h2>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items load here -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+                <button class="btn btn-primary" id="checkoutBtn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content glass auth-box">
+            <span class="close-btn" id="closeAuth">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-target="loginMenu">Login</button>
+                <button class="tab-btn" data-target="registerMenu">Register</button>
+            </div>
+            
+            <form id="loginMenu" class="auth-form active">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="loginUser" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPass" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Log In</button>
+                <p id="loginMessage" class="error-msg"></p>
+            </form>
+
+            <form id="registerMenu" class="auth-form">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="regUser" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="regPass" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Register</button>
+                <p id="regMessage" class="error-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Action Successful</div>
+
+    <footer>
+        <p>&copy; 2026 NexusTech. All realities reserved.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test-backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+        
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        cache-dependency-path: ./backend/package-lock.json
+        
+    - name: Install dependencies
+      run: npm install
+      
+    # In a real app we'd run real unit tests here:
+    # - name: Run tests
+    #   run: npm test
+
+  build-docker-images:
+    needs: build-and-test-backend
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Build Backend Image
+      run: docker build -t my-ecommerce-backend:latest ./backend
+      
+    - name: Build Frontend Image
+      run: docker build -t my-ecommerce-frontend:latest ./frontend
+
+  # Simulated Deployment Step
+  deploy:
+    needs: build-docker-images
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Simulate Deployment
+      run: |
+        echo "🚀 Starting Deployment Process..."
+        echo "✅ Authenticating with cloud provider..."
+        echo "✅ Pushing docker images to registry..."
+        echo "✅ Updating container orchestration (e.g., ECS, K8s, or docker-compose on VPS)..."
+        echo "🎉 Deployment successful!"
